@@ -27,7 +27,7 @@ jobs:
     - name: Run Preprocessing Automation
       run: |
         cd preprocessing
-        python automate_siswa.py ../wine_quality_raw.csv ./namadataset_preprocessing/wine_preprocessed.csv
+        python automate_Ersa.py ../wine_quality_raw.csv ./namadataset_preprocessing/wine_preprocessed.csv
 
     - name: Commit and Push Preprocessed Data
       run: |
