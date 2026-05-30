@@ -6,16 +6,21 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   preprocess:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
 
@@ -36,3 +41,4 @@ jobs:
         git add preprocessing/namadataset_preprocessing/wine_preprocessed.csv
         git diff-index --quiet HEAD || git commit -m "chore: auto-update preprocessed dataset [skip ci]"
         git push
+
